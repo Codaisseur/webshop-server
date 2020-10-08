@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const orders = await Order.findByPk(id, {
+    const order = await Order.findByPk(id, {
       include: [
         {
           model: Product,
@@ -29,7 +29,8 @@ router.get("/:id", async (req, res, next) => {
         User,
       ],
     });
-    res.send(orders);
+    const newOrder = { ...order, email: `${order.id}@aljsnakjd.com` };
+    res.send(newOrder);
   } catch (e) {
     next(e);
   }
