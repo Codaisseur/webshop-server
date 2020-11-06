@@ -9,13 +9,31 @@ Routes for:
 
 ## frontend:
 
-- Set up create-react-app
-- Set up redux boilerplate and first reducer slice
-- Create first page skeleton (product list)
-- Make or make use of routes and get some data to the front end,
-  make a request and check with consolelog we are getting the data in the front end
-- Get data to redux state
-- get it to the page skeleton and log it also
-- Once data is in the component, start building the UI.
+- set up create-react-app
+- npm install \*
+- Router and routes
+- Create component and attach to the router.
+- Set up the store
+- Set up homepage and thunk action to GET products.
+- Render products with an `add to cart` button
+- Shopping cart logic in redux - add and remove products. (Goal 1). //[{}, {}, {}] => state.products || state.cart
 
-- Move on to next page.
+Cart, what shape do we set it up?
+
+=> [{p}, {p}, {p}] => array of products.
+=> [1, 3, 5] => array of productIds || [1,1,1,3,5];
+\*\* => [{ productId, quantity}, {pId, quantity}]; => The one I like the most.
+
+Add a product:
+=> Be already in the cart. => increase quantity + 1
+=> not in the cart. => Create a new object with quantity === 1;
+
+Removing product from cart:
+=> If more than 1 => quantity - 1
+=> If there is only 1 => remove object.
+
+After this: (more goals)
+
+- At this point we can (or not) split the work:
+  => ShoppingCart (checkout) page/
+  => Login and storing user data.
